@@ -1,0 +1,12 @@
+class Main {
+
+    /** Initializes a new Cross Dance game and starts running it. */
+    function void main() {
+        var CrossGame game;
+        let game = CrossGame.new();
+        // do Sys.wait(5000);
+        do game.run();
+        do game.dispose();
+        return;
+    }
+}

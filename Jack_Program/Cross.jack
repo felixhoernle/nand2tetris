@@ -1,0 +1,77 @@
+/** Implements a graphical cross */
+class Cross {
+
+    field int x, y; // screen location of the cross' center
+    field int length; // length of this cross, in pixels
+
+    /** Constructs a new cross with a given center point and length of each line extending from the cross center */
+    constructor Cross new(int Cx, int Cy, int Clength) {
+        let x = Cx;
+        let y = Cy;
+        let length = Clength;
+        do draw();
+        return this;
+    }
+
+    /** Disposes this cross */
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    /** Draws the cross on the screen */
+    method void draw() {
+        do Screen.setColor(true);
+        do Screen.drawLine(x - length, y , x + length, y); // Draws horizontal line.
+        do Screen.drawLine(x, y - length, x, y + length); // Draws vertical line.
+        return;
+    }
+
+    /** Erases the cross from the screen */
+    method void erase() {
+        do Screen.setColor(false);
+        do Screen.drawLine(x - length, y , x + length, y); // Erases horizontal line.
+        do Screen.drawLine(x, y - length, x, y + length); // Erases vertical line.
+        return;
+    }
+
+    //* Move the cross up by 2 pixels. */
+    method void moveUp() {
+        if (y > (length + 1)) {
+            do erase();
+            let y = y - 2;
+            do draw();
+        }
+        return;
+    }
+
+    //* Move the cross down by 2 pixels. */
+    method void moveDown() {
+        if ((y+length) < 254) {
+            do erase();
+            let y = y + 2;
+            do draw();
+        }
+        return;
+    }
+
+    //* Move the cross left by 2 pixels. */
+    method void moveLeft() {
+        if (x > (length + 1)) {
+            do erase();
+            let x = x - 2;
+            do draw();
+        }
+        return;
+    }
+
+    //* Move the cross right by 2 pixels. */
+    method void moveRight() {
+        if ((x+length) < 510) {
+            do erase();
+            let x = x + 2;
+            do draw();
+        }
+        return;
+    }
+}

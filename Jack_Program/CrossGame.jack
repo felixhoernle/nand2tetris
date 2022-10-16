@@ -1,0 +1,53 @@
+
+class CrossGame {
+    field Cross cross; // The cross of this game.
+    field int direction; // The cross' intended direction (0=none, 1=up)
+
+    /** Constructs a new Cross Game */
+    constructor CrossGame new() {
+        let cross = Cross.new(2, 2, 2);
+        let direction = 0; // Initially no movement
+        return this;
+    }
+
+    /** Disposes this game */
+    method void dispose() {
+        do cross.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void moveCross() {
+        if (direction = 1) { do cross.moveUp(); }
+        if (direction = 2) { do cross.moveDown(); }
+        if (direction = 3) { do cross.moveLeft(); }
+        if (direction = 4) { do cross.moveRight(); }
+        do Sys.wait(50);  // delays the next movement
+        return;
+    }
+
+    method void run() {
+        var char key;
+        var boolean exit;
+        let exit = false;
+
+        while (~exit) {
+            while (key = 0) {
+                let key = Keyboard.keyPressed();
+            }
+
+            if (key = 81) { let exit = true; } // q key
+            if (key = 131) { let direction = 1; }   // up arrow
+            if (key = 133) { let direction = 2; }   // down arrow
+            if (key = 130) { let direction = 3; }   // left arrow
+            if (key = 132) { let direction = 4; }   // right arrow
+
+            while ( ~(key = 0) ) {
+                let key = Keyboard.keyPressed();
+                do moveCross();
+                let direction = 0; // Reset direction to none after moving.
+            }
+        }
+        return;
+    }
+}
