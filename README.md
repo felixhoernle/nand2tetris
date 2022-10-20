@@ -1,4 +1,4 @@
-# Project Title
+# Nand2Tetris Compiler
 
 Compiler from high-level Jack language to binary Hack machine code.
 
@@ -49,5 +49,5 @@ The code was completely written by myself, in the course of the (excellent) Cour
 ## Acknowledgments
 
 Credits go to Shimon Schocken, Noam Nisan and their team for developing this course and providing it through Coursera.
-* [nand2tetris](https://www.nand2tetris.org/)
-* [Coursera Course](https://www.coursera.org/learn/nand2tetris2)
+* [nand2tetris Homepage](https://www.nand2tetris.org/)
+* [Coursera Course nand2tetris](https://www.coursera.org/learn/nand2tetris2)
